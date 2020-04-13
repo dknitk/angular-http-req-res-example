@@ -50,26 +50,46 @@ export class HttpReqRespExample {
   doGET() {
     console.log("Get Example");
     //alert("Hello");
-    let url = "${this.apiRoot}/get";
-
-    //let params: URLSearchParams = new URLSearchParams();
-    //params.set('foo','moo');
-    //params.set('limit', '25');
+    let url = "${this.apiRoot}/get";  
 
     let params = new HttpParams({ fromString: "'foo'='moo'& limit=25" });
     params = params.append("foo", "moo").append("limit", "25");
 
-    this.http
+      alert(this.http
       .get(url, { params: params })
-      .subscribe(res => console.log(JSON.stringify(res)));
+      .subscribe(res => console.log(JSON.stringify(res))));
   }
 
   doPost() {
     console.log("Do Post");
+     let url = "${this.apiRoot}/get";
+     let params = new HttpParams({ fromString: "'foo'='moo'& limit=25" });
+     params = params.append("foo", "moo").append("limit", "25");
+
+     this.http.post(url, {moo:"foo", goo:"loo"}, {params: params}).subscribe(res =>
+     console.log(JSON.stringify(res)));
+
   }
 
   doPut() {
     console.log("Do Put");
+
+    console.log("Do Post");
+     let url = "${this.apiRoot}/get";
+     let params = new HttpParams({ fromString: "'foo'='moo'& limit=25" });
+     params = params.append("foo", "moo").append("limit", "25");
+
+     this.http.put(url, {moo:"foo", goo:"loo"}, {params: params}).subscribe(res =>
+     console.log(JSON.stringify(res)));
+  }
+  doDelete(){
+    console.log("Do Post");
+     let url = "${this.apiRoot}/get";
+     let params = new HttpParams({ fromString: "'foo'='moo'& limit=25" });
+     params = params.append("foo", "moo").append("limit", "25");
+
+     this.http.delete(url, {params: params}).subscribe(res =>
+     console.log(JSON.stringify(res)));
   }
 
   doGetAsPromise() {
@@ -82,5 +102,10 @@ export class HttpReqRespExample {
 
   doGetAsObservableError() {
     console.log("Do Get As Observable Error");
+  }
+
+  doGETWithHeaders(){
+    console.log("Get with Header");
+      //lets opts: RequestOtions
   }
 }

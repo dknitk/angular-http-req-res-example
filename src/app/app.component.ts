@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Http Request and Response Example';
+
+  console = console;
 }
